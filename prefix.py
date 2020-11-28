@@ -1,0 +1,3 @@
+prefix_dict = {'After-': 'Nicol-', 'Arch-': 'Gost-', 'Ecto-': 'Shuthraz-', 'Ever-': 'Im-', 'Many-': 'Shàmman-', 'Necro-': 'Ugith-', 'Neo-': 'Lärim-', 'Never-': 'Nanoth-', 'One-': 'Nir-', 'Over-': 'Ág-', 'Three-': 'Mez-', 'Two-': 'Nob-', 'Ultra-': 'Ishëm-', 'Un-': 'Nas-', 'Under-': 'Arôl-', 'Were-': 'Senel-'}
+
+prefix = ['After-', 'Arch-', 'Ecto-', 'Ever-', 'Many-', 'Necro-', 'Neo-', 'Never-', 'One-', 'Over-', 'Three-', 'Two-', 'Ultra-', 'Un-', 'Under-', 'Were-']
