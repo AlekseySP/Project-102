@@ -3,7 +3,9 @@ import pygame.locals
 import sys
 import random
 
-screenSize = (400, 400)
+side = 700
+screenSize = (side, side)
+step = 25
 
 WHITE = (255,255,255)
 GREEN = (0,255,0)
@@ -18,6 +20,8 @@ NAVYBLUE = (0, 0, 128)
 OLIVE = (128, 128, 0)
 PURPLE = (128, 0, 128)
 TEAL = (0,128,128)
+BROWN = (139, 69, 19)
+YELLOW = (255, 255, 0)
 
 color_list = [GREEN, LIME, OLIVE]
 
@@ -34,25 +38,32 @@ def draw_map(tl):
         "empty": tl[0],
         "face": tl[1],
         "halmet": tl[2],
-        "small_tree": tl[3]
-        }
-
+        "small_tree": tl[3]}
+ 
+obj_dict = {
+   	"flower": ["*", YELLOW],
+   	"trunk": ["o", BROWN],
+   	"berry": ["•", RED]
+}
+  
+grass_list = ["'", ",", ".", " ", "_", "/", ";", "-"] 
+  
 def show_all(tile_list):
     x = 8
     y = 0
-    grass_list = ["'", ",", ".", "`"]
-    tile_number = int(screenSize[0]/16) * int(screenSize[1]/16)
+    tile_number = int(screenSize[0]/step) * int(screenSize[1]/step)
     for i in range(tile_number):
-        myfont = pygame.font.SysFont('Comic Sans MS', 25)
-        textsurface = myfont.render(random.choice(grass_list), False, random.choice(color_list))
-        
-        # print()
-        # i.set_alpha(200)
+        myfont = pygame.font.SysFont('Comic Sans MS', int(step * 1.6))
+        if random.random() <= 0.95:
+        	textsurface = myfont.render(random.choice(grass_list), False, random.choice(color_list))
+        else: 
+        	textsurface = myfont.render("o", False, BROWN)
+
         screen.blit(textsurface, (x, y))
-        x += 16
-        if x >= 400:
+        x += step
+        if x >= screenSize[0]:
             x = 8
-            y += 16
+            y += step
 
 
 if __name__=='__main__':
