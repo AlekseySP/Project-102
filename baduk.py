@@ -23,39 +23,43 @@ def draw_board(width, height):
 	r1 = pygame.Rect((step, step, side-step*2, side-step*2))
 	pygame.draw.rect(screen, GRAY, r1, 3)
 	z = step*2
-	b_step = (side - (step+z)*2) / board_size
+	b_step = (side - (step+z)*2) / (board_size - 1)
 	x1 = step + z
 	y1 = step + z
 	x2 = side - (step+z)
 	y2 = side - (step + z)
 	coord_list = {}
 	
-	for i in range(board_size + 1):
+	for v in range(board_size):
 		pygame.draw.line(screen, GRAY, [x1, y1], [x1, y2], 1)
-		coord_list[str(i)] = [x1]
+		coord_list[str(v)] = [x1]
 		x1 += b_step
 	
-	coord_list[str(board_size + 1)] = [x1]
+	#coord_list[str(board_size)] = [x1]
 	x1 = step + z
 
-	for i in range(board_size + 1):
+	for h in range(board_size):
 		pygame.draw.line(screen, GRAY, [x1, y1], [x2, y1], 1)
-		coord_list[str(i)].append(y1)
+		coord_list[str(h)].append(y1)
 		y1 += b_step
 
-	coord_list[str(board_size + 1)].append(y1)
+	pygame.draw.circle(screen, GRAY, coord_list["3"], 5)
+	pygame.draw.circle(screen, GRAY, coord_list["9"], 5)
+	pygame.draw.circle(screen, GRAY, coord_list["15"], 5)
+	pygame.draw.circle(screen, GRAY, [coord_list["3"][0], coord_list["15"][1]], 5)
+	pygame.draw.circle(screen, GRAY, [coord_list["15"][0], coord_list["3"][1]], 5)
 
-	for i in range(10):
+	for i in range(100):
 		color = random.random()
-		rx = coord_list[str(random.randrange(board_size + 1))][0]
-		ry = coord_list[str(random.randrange(board_size + 1))][1]
+		rx = coord_list[str(random.randrange(board_size))][0]
+		ry = coord_list[str(random.randrange(board_size))][1]
 		if color >= 0.5:
 			pygame.draw.circle(screen, WHITE, [rx, ry], b_step*0.45)
 			pygame.draw.circle(screen, GRAY, [rx, ry], b_step*0.45, 1)
 		else:
 			pygame.draw.circle(screen, BLACK, [rx, ry], b_step*0.45)
 			pygame.draw.circle(screen, GRAY, [rx, ry], b_step*0.45, 1)
-
+	
 	pygame.display.update()
 
 def draw_white_stone(pos_c):
