@@ -8,11 +8,11 @@ class Dwarf(object):
 	name,
 	hit_points,
 	action_points,
-	wapon=None):
+	weapon=None):
 		self.name = name
 		self.hp = hit_points
 		self.ap = action_points
-		self.wapon = wapon
+		self.weapon = weapon
 		
 	def say(self, words="Wha?"):
 		self.words = words
